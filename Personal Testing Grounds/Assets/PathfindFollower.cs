@@ -8,6 +8,7 @@ public class PathfindFollower : MonoBehaviour
 
     bool hasStarted = false;
     public float speed;
+    public float pointReachedDelay; // How long the object waits after reaching a point
     public float checkDistance;
 
     int currentPathPoint;
@@ -38,6 +39,7 @@ public class PathfindFollower : MonoBehaviour
             {
                 currentPathPoint++;
                 lerp = 0;
+                StartCoroutine("Delay");
             }
         }
         else
@@ -45,5 +47,13 @@ public class PathfindFollower : MonoBehaviour
             hasStarted = false;
             Debug.Log("Reached the end of the path");
         }
+    }
+
+    IEnumerator Delay()
+    {
+        float tempSpeedValue = speed;
+        speed = int.MaxValue;
+        yield return new WaitForSeconds(pointReachedDelay);
+        speed = tempSpeedValue;
     }
 }

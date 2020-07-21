@@ -151,14 +151,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 10.557, y: 0, z: 10.79}
+  - {x: 5.894821, y: 0, z: 10.79}
+  - {x: 5.8952084, y: 0, z: 13.527023}
+  - {x: 2.307, y: 0, z: 13.54}
+  - {x: 2.307, y: 0, z: 17.79}
+  - {x: -4.193, y: 0, z: 17.79}
+  - {x: -4.193, y: 0, z: 8.79}
+  - {x: -1.1930001, y: 0, z: 8.79}
+  - {x: -1.1930001, y: 0, z: 11.04}
+  - {x: 2.307, y: 0, z: 11.04}
+  - {x: 2.307, y: 0, z: 6.54}
+  - {x: -7.943, y: 0, z: 6.54}
   pathPointSize: 0.1
   showPath: 1
   pathOffset: {x: 0, y: 0, z: 0}
@@ -172,7 +176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47729046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.23, y: 0, z: 11.82}
+  m_LocalPosition: {x: 2.057, y: 0, z: 10.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -448,6 +452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 47729047}
   speed: 0.5
+  pointReachedDelay: 0.3
   checkDistance: 0
 --- !u!65 &561894159
 BoxCollider:
