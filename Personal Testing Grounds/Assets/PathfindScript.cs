@@ -37,11 +37,15 @@ public class PathfindScriptEditor : Editor
             }
         }
 
+        if (GUILayout.Button("Generate Path Blockers"))
+        {
+            pathfindScript.GeneratePathBlockers();
+        }
+
         if (GUILayout.Button("RESET PATH"))
         {
             pathfindScript.pathPoints.Clear();
         }
-
 
 
 
@@ -80,6 +84,8 @@ public class PathfindScript : MonoBehaviour
     // Gizmo settings
     public Color lineColor;
     public Color pointColor;
+    public GameObject pathBlockerPrefab;
+    public GameObject pathBlockerParent;
 
     private void OnDrawGizmos()
     {
@@ -98,6 +104,18 @@ public class PathfindScript : MonoBehaviour
                 }
             }
 
+        }
+    }
+
+    public void GeneratePathBlockers()
+    {
+        for (int i = 0; i < pathPoints.Count - 1; i++)
+        {
+            GameObject newPathBlocker = Instantiate(pathBlockerPrefab, pathBlockerParent.transform);
+            newPathBlocker.transform.position = Vector3.Lerp(pathPoints[i], pathPoints[i + 1], 0.5f);
+            newPathBlocker.transform.position += new Vector3(0, 0.5f, 0);
+            newPathBlocker.transform.localScale = new Vector3(1, 1, 1 * Vector3.Distance(pathPoints[i], pathPoints[i + 1]) + 1f);
+            newPathBlocker.transform.LookAt(pathPoints[i + 1] + new Vector3(0, .5f, 0));
         }
     }
 }

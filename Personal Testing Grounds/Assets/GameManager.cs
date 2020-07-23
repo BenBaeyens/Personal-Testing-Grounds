@@ -31,5 +31,7 @@ public class Tower
     public string description;
     public float cost;
     public float damage;
+    public float damageOverTime;
+    public float damageOverTimeTickSpeed;
     public GameObject modelPrefab;
 }

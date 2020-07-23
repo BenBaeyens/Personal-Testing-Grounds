@@ -21,6 +21,10 @@ public class TowerScript : MonoBehaviour
 
     public GameObject towerObject;
 
+    public Vector3 oldPos;
+
+    public int dir = 0;
+
     private void Start()
     {
         towerObject = transform.parent.GetChild(1).gameObject;
@@ -33,19 +37,23 @@ public class TowerScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+                oldPos = transform.position;
                 transform.position += new Vector3(0, 0, 1);
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
+                oldPos = transform.position;
                 transform.position += new Vector3(0, 0, -1);
             }
 
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
+                oldPos = transform.position;
                 transform.position += new Vector3(1, 0, 0);
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                oldPos = transform.position;
                 transform.position += new Vector3(-1, 0, 0);
             }
 
@@ -67,16 +75,18 @@ public class TowerScript : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Round(transform.position.z * (1 / snapValueZ)) / (1 / snapValueZ));
         }
         towerObject.transform.position = Vector3.Lerp(towerObject.transform.position, transform.position, Time.deltaTime / followSpeed);
-
-
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PathBlocker"))
         {
-            Debug.Log("NOPE");
+            HitPathBlocker();
         }
+    }
+
+    public void HitPathBlocker()
+    {
+        transform.position = oldPos;
     }
 }
