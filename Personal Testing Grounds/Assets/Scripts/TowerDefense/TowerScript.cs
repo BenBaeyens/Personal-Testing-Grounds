@@ -21,9 +21,8 @@ public class TowerScript : MonoBehaviour
 
     public GameObject towerObject;
 
-    public Vector3 oldPos;
+    Vector3 oldPos;
 
-    public int dir = 0;
 
     private void Start()
     {
