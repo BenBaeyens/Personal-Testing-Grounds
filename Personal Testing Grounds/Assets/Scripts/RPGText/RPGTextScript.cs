@@ -14,23 +14,28 @@ public class RPGTextScript : MonoBehaviour
     public string dialogue;
 
     bool isTalking;
-    public float currentChar = 0;
+    float currentChar = 0;
 
-    private void Start() {
+    private void Start()
+    {
         displayText.text = NPCName + ": ";
     }
 
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.B)){
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
             isTalking = true;
             currentChar = 0;
         }
 
-        if(isTalking){
-            if(currentChar >= dialogue.Length)
+        if (isTalking)
+        {
+            if (currentChar >= dialogue.Length)
                 isTalking = false;
-            else{
-                displayText.text = NPCName + ": " + dialogue.Substring(0, (int)currentChar +1);
+            else
+            {
+                displayText.text = NPCName + ": " + dialogue.Substring(0, (int)currentChar + 1);
                 currentChar += textSpeed * Time.deltaTime;
             }
         }
