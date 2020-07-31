@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/LifeGrid.unity
+- path: Assets/Scenes/SchoolSubjects.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
