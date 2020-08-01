@@ -11,7 +11,7 @@ public class KeyMapping : MonoBehaviour
     public string remapMessage = "<PRESS A KEY>"; // The message that gets displayed upon remapping a key
     public KeyCode keyCode; // The assigned key
 
-    public List<KeyCode> keyCodes = new List<KeyCode>();
+    List<KeyCode> keyCodes = new List<KeyCode>();
 
 
     // Debugging messages
