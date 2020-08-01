@@ -11,6 +11,8 @@ public class KeyMapping : MonoBehaviour
     public string remapMessage = "<PRESS A KEY>"; // The message that gets displayed upon remapping a key
     public KeyCode keyCode; // The assigned key
 
+    public List<KeyCode> keyCodes = new List<KeyCode>();
+
 
     // Debugging messages
     public bool enableDebuggingMessages = false;
@@ -26,6 +28,10 @@ public class KeyMapping : MonoBehaviour
         action = transform.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         noDefaultKeyMessage = noDefaultKeyMessage + action + ".";
 
+        foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
+        {
+            keyCodes.Add(kcode);
+        }
 
         if (keyCode != KeyCode.None)
             KeyText.text = keyCode.ToString().ToUpper();
@@ -54,18 +60,15 @@ public class KeyMapping : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(keyCode))
+        if (Input.GetKeyDown(keyCode) && !isRemapping)
         {
             if (enableDebuggingMessages)
                 Debug.Log(action);
         }
-    }
 
-    void LateUpdate()
-    {
         if (isRemapping)
         {
-            foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
+            foreach (KeyCode kcode in keyCodes)
             {
                 if (Input.GetKey(kcode))
                 {
@@ -77,6 +80,7 @@ public class KeyMapping : MonoBehaviour
                 }
             }
         }
+
     }
 
 }
