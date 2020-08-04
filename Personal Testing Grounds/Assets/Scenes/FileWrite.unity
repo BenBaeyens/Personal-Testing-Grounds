@@ -233,10 +233,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e030daa88f4392d4fb38f414f8c8332a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  writePath: Assets/Resources/Salary.txt
-  wagesPath: Assets/Resources/Wages.txt
-  employeesPath: Assets/Resources/Employees.txt
-  hoursWorkedPath: Assets/Resources/HoursWorked.txt
+  writePath: Assets/Files/Salary.txt
+  wagesPath: Assets/Files/Wages.txt
+  employeesPath: Assets/Files/Employees.txt
+  hoursWorkedPath: Assets/Files/HoursWorked.txt
   write: 0
 --- !u!4 &2098672612
 Transform:
