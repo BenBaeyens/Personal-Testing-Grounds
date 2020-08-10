@@ -39,7 +39,7 @@ public class BuildSystemScript : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                currentlyPlacingObject.transform.position = hit.point;
+                currentlyPlacingObject.transform.position = new Vector3(Mathf.Round(hit.point.x), hit.point.y - .5f, Mathf.Round(hit.point.z));
             }
         }
     }

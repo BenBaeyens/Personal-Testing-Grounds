@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Stylized_Game.unity
-  isLoaded: 0
-  isActive: 0
+- path: Assets/Scenes/Build System.unity
+  isLoaded: 1
+  isActive: 1
   isSubScene: 0

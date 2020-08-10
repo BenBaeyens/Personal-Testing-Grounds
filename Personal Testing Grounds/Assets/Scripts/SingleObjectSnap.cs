@@ -29,15 +29,15 @@ public class SingleObjectSnap : MonoBehaviour
     {
         if (Application.isPlaying && _enabled)
         {
-            transform.position = positionSphere.position;
-            if (snapValueX != 0)
-                transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Round(transform.position.x * (1 / snapValueX)) / (1 / snapValueX), transform.position.y, transform.position.z), smoothTime * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, positionSphere.position, smoothTime);
+            //     if (snapValueX != 0)
+            //         transform.position = Vector3.Lerp(positionSphere.position, new Vector3(Mathf.Round(positionSphere.position.x * (1 / snapValueX)) / (1 / snapValueX), transform.position.y, transform.position.z), smoothTime * Time.deltaTime);
 
-            if (snapValueY != 0)
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, Mathf.Round(transform.position.y * (1 / snapValueY)) / (1 / snapValueY), transform.position.z), smoothTime * Time.deltaTime);
+            //     if (snapValueY != 0)
+            //         transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, Mathf.Round(positionSphere.position.y * (1 / snapValueY)) / (1 / snapValueY), transform.position.z), smoothTime * Time.deltaTime);
 
-            if (snapValueZ != 0)
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y, Mathf.Round(transform.position.z * (1 / snapValueZ)) / (1 / snapValueZ)), smoothTime * Time.deltaTime);
+            //     if (snapValueZ != 0)
+            //         transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y, Mathf.Round(positionSphere.position.z * (1 / snapValueZ)) / (1 / snapValueZ)), smoothTime * Time.deltaTime);
         }
     }
 }
