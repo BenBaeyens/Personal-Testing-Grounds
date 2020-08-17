@@ -47,7 +47,7 @@ public class BuildSystemScript : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit) && currentlyPlacingObject != null)
             {
                 if (currentBuildType == CurrentBuildType.Foundation)
                 {
@@ -70,6 +70,17 @@ public class BuildSystemScript : MonoBehaviour
         if (isPlacing && currentBuildType == CurrentBuildType.Wall && Input.GetKeyDown(KeyCode.R))
         {
             // Rotate wall if placing wall
+            currentVariant++;
+            if (currentVariant < wallVariants.Length)
+            {
+                // Rotate the wall
+                GameObject newWall = Instantiate(wallVariants[currentVariant], currentlyPlacingObject.transform.parent.position, currentlyPlacingObject.transform.parent.rotation);
+                // Destroy the old wall
+                Destroy(currentlyPlacingObject.transform.parent.gameObject);
+                // Get the new wall
+                currentlyPlacingObject = newWall.transform.GetChild(1).gameObject;
+            }
+
 
         }
     }
@@ -83,6 +94,7 @@ public class BuildSystemScript : MonoBehaviour
                 break;
             case CurrentBuildType.Wall:
                 currentlyPlacingObject = Instantiate(wallVariants[0]).GetComponentInChildren<PositionSphereLocator>().gameObject;
+                currentVariant = 0;
                 break;
             case CurrentBuildType.Floor:
                 currentlyPlacingObject = Instantiate(floors[0]).GetComponentInChildren<PositionSphereLocator>().gameObject;
