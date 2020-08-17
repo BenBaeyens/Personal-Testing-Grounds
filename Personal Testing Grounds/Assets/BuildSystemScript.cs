@@ -62,8 +62,9 @@ public class BuildSystemScript : MonoBehaviour
 
         if (isPlacing && Input.GetMouseButtonDown(0))
         {
-            // Get the actual visual object and remove its raycast block
-            currentlyPlacingObject.transform.parent.GetChild(0).gameObject.layer = 0;
+            // Get the actual visual object and remove its raycast block if it's a foundation
+            if (currentBuildType == CurrentBuildType.Foundation)
+                currentlyPlacingObject.transform.parent.GetChild(0).gameObject.layer = 0;
             isPlacing = false;
         }
 
@@ -71,18 +72,23 @@ public class BuildSystemScript : MonoBehaviour
         {
             // Rotate wall if placing wall
             currentVariant++;
-            if (currentVariant < wallVariants.Length)
-            {
-                // Rotate the wall
-                GameObject newWall = Instantiate(wallVariants[currentVariant], currentlyPlacingObject.transform.parent.position, currentlyPlacingObject.transform.parent.rotation);
-                // Destroy the old wall
-                Destroy(currentlyPlacingObject.transform.parent.gameObject);
-                // Get the new wall
-                currentlyPlacingObject = newWall.transform.GetChild(1).gameObject;
-            }
+            if (currentVariant >= wallVariants.Length)
+                currentVariant = 0;
+            RotateWall();
+
 
 
         }
+    }
+
+    private void RotateWall()
+    {
+        // Rotate the wall
+        GameObject newWall = Instantiate(wallVariants[currentVariant], currentlyPlacingObject.transform.parent.position, currentlyPlacingObject.transform.parent.rotation);
+        // Destroy the old wall
+        Destroy(currentlyPlacingObject.transform.parent.gameObject);
+        // Get the new wall
+        currentlyPlacingObject = newWall.transform.GetChild(1).gameObject;
     }
 
     public void PurchaseNewBuild(int buildType)
