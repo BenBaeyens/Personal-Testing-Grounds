@@ -12,12 +12,10 @@ public class SingleObjectSnap : MonoBehaviour
 
     public bool _enabled;
 
-    public float snapValueX;
-    public float snapValueY;
-    public float snapValueZ;
     public float smoothTime;
 
     Transform positionSphere;
+    public Vector3 Offset;
 
 
     private void Start()
@@ -29,7 +27,7 @@ public class SingleObjectSnap : MonoBehaviour
     {
         if (Application.isPlaying && _enabled)
         {
-            transform.position = Vector3.Lerp(transform.position, positionSphere.position, smoothTime);
+            transform.position = Vector3.Lerp(transform.position, positionSphere.position + Offset, smoothTime);
             //     if (snapValueX != 0)
             //         transform.position = Vector3.Lerp(positionSphere.position, new Vector3(Mathf.Round(positionSphere.position.x * (1 / snapValueX)) / (1 / snapValueX), transform.position.y, transform.position.z), smoothTime * Time.deltaTime);
 
