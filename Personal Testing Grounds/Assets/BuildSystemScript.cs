@@ -28,6 +28,8 @@ public class BuildSystemScript : MonoBehaviour
     CurrentBuildType currentBuildType;
     int currentVariant = 0;
 
+    List<GameObject> wallsInView = new List<GameObject>();
+
     private void Awake()
     {
         if (Instance == null)
